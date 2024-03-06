@@ -8,37 +8,37 @@ function App() {
     {
       nome: "Programação",
       corPrimaria: "#57C278",
-      corSecundaria: "#D9F7E9"
+      corSecundaria: "#D9F7E9",
     },
     {
       nome: "Front-End",
       corPrimaria: "#82CFFA",
-      corSecundaria: "#E8F8FF"
+      corSecundaria: "#E8F8FF",
     },
     {
       nome: "Data-Science",
       corPrimaria: "#A6D157",
-      corSecundaria: "#F9F8E2"
+      corSecundaria: "#F9F8E2",
     },
     {
       nome: "DevOps",
       corPrimaria: "#E06B669",
-      corSecundaria: "#FDE7E8"
+      corSecundaria: "#FDE7E8",
     },
     {
       nome: "UX e Design",
       corPrimaria: "#DB6EBF",
-      corSecundaria: "#FAE9F5"
+      corSecundaria: "#FAE9F5",
     },
     {
       nome: "Mobile",
       corPrimaria: "#FFBA05",
-      corSecundaria: "#FFF5D9"
+      corSecundaria: "#FFF5D9",
     },
     {
       nome: "Inovação e Gestão",
       corPrimaria: "#FF8A29",
-      corSecundaria: "#FFEEDF"
+      corSecundaria: "#FFEEDF",
     },
   ];
   const [colaboradores, setColaboradores] = useState([]);
@@ -51,7 +51,10 @@ function App() {
   return (
     <div className="App">
       <Banner />
-      <Formulario aoColaboradorCadastrado={aoNovoColaboradorAdicionado} />
+      <Formulario
+        times={times.map((time) => time.nome)}
+        aoColaboradorCadastrado={aoNovoColaboradorAdicionado}
+      />
 
       {times.map((time) => (
         <Time
