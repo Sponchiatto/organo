@@ -6,7 +6,6 @@ import "./Formulario.css";
 
 const Formulario = (props) => {
   const times = [
-    "",
     "Programação",
     "Front-End",
     "Data-Science",
