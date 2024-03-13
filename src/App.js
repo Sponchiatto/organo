@@ -2,6 +2,7 @@ import { useState } from "react";
 import Banner from "./components/Banner/Banner";
 import Formulario from "./components/Formulario";
 import Time from "./components/Time";
+import Rodape from "./components/Rodape/Rodape";
 
 function App() {
   const times = [
@@ -67,6 +68,7 @@ function App() {
           )}
         />
       ))}
+      <Rodape />
     </div>
   );
 }
