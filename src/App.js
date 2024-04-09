@@ -307,7 +307,6 @@ function App() {
           setColaboradores([...colaboradores, colaborador])
         }
       />
-
       {times.map((time, indice) => {
         return (
           <Time

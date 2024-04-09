@@ -1,4 +1,4 @@
-import "./ListaSuspensa.css";
+import "./lista-suspensa.css";
 
 const ListaSuspensa = ({
   label,
