@@ -3,6 +3,7 @@ import Banner from "./components/Banner/Banner";
 import Formulario from "./components/Formulario";
 import Time from "./components/Time";
 import Rodape from "./components/Rodape/Rodape";
+import Adicionar from "./components/Adicionar";
 import { v4 as uuidv4 } from "uuid";
 //Figma design
 //https://www.figma.com/file/EPRYDxrXa7ZHvnTvj2h464/Projeto-Intro-ao-React-(Copy)?type=design&node-id=134-128&mode=design&t=2Yv00o4LpDq87SeZ-0
@@ -266,6 +267,7 @@ function App() {
   ];
 
   const [colaboradores, setColaboradores] = useState(inicial);
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   function deletarColaborador(id) {
     setColaboradores(
@@ -284,8 +286,12 @@ function App() {
     );
   }
 
-  function cadastrarTime(novoTime) {
+  function aoCriarTime(novoTime) {
     setTimes([...times, { ...novoTime, id: uuidv4() }]);
+  }
+
+  function mostrarForm() {
+    setMostrarFormulario(!mostrarFormulario);
   }
 
   function resolverFavorito(id) {
@@ -296,17 +302,24 @@ function App() {
       })
     );
   }
-
   return (
     <div className="App">
       <Banner />
-      <Formulario
-        cadastrarTime={cadastrarTime}
-        times={times.map((time) => time.nome)}
-        aoCadastrar={(colaborador) =>
-          setColaboradores([...colaboradores, colaborador])
-        }
+
+      {mostrarFormulario && (
+        <Formulario
+          cadastrarTime={aoCriarTime}
+          times={times.map((time) => time.nome)}
+          aoCadastrar={(colaborador) =>
+            setColaboradores([...colaboradores, colaborador])
+          }
+        />
+      )}
+
+      <Adicionar
+        toggleFormulario={() => setMostrarFormulario(!mostrarFormulario)}
       />
+
       {times.map((time, indice) => {
         return (
           <Time

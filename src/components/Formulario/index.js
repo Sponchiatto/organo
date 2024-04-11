@@ -4,7 +4,7 @@ import Campo from "../Campo";
 import ListaSuspensa from "../ListaSuspensa";
 import "./formulario.css";
 
-const Formulario = ({ aoCadastrar, times, aoCriarTime }) => {
+const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
@@ -59,7 +59,7 @@ const Formulario = ({ aoCadastrar, times, aoCriarTime }) => {
         className="formulario"
         onSubmit={(evento) => {
           evento.preventDefault();
-          aoCriarTime({ nome: nomeTime, cor: corTime });
+          cadastrarTime({ nome: nomeTime, cor: corTime });
         }}
       >
         <h2>Preencha os dados para criar um novo time.</h2>
