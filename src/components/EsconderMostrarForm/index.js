@@ -1,7 +1,7 @@
 import "./adicionar.css";
 import { BiAddToQueue } from "react-icons/bi";
 
-function Adicionar({ toggleFormulario }) {
+function EsconderMostrarForm({ toggleFormulario }) {
   return (
     <div className="container">
       <h1 className="titulo prata-regular">Minha Organização</h1>
@@ -13,4 +13,4 @@ function Adicionar({ toggleFormulario }) {
   );
 }
 
-export default Adicionar;
+export default EsconderMostrarForm;

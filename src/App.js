@@ -3,7 +3,7 @@ import Banner from "./components/Banner/Banner";
 import Formulario from "./components/Formulario";
 import Time from "./components/Time";
 import Rodape from "./components/Rodape/Rodape";
-import Adicionar from "./components/Adicionar";
+import Adicionar from "./components/EsconderMostrarForm";
 import { v4 as uuidv4 } from "uuid";
 //Figma design
 //https://www.figma.com/file/EPRYDxrXa7ZHvnTvj2h464/Projeto-Intro-ao-React-(Copy)?type=design&node-id=134-128&mode=design&t=2Yv00o4LpDq87SeZ-0
@@ -288,10 +288,6 @@ function App() {
 
   function aoCriarTime(novoTime) {
     setTimes([...times, { ...novoTime, id: uuidv4() }]);
-  }
-
-  function mostrarForm() {
-    setMostrarFormulario(!mostrarFormulario);
   }
 
   function resolverFavorito(id) {
