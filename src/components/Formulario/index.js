@@ -79,6 +79,23 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
           aoAlterado={(valor) => setCorTime(valor)}
         />
         <Botao texto="Criar Time" />
+        <form
+          className="formulario formulario-deletar"
+          onSubmit={(evento) => {
+            evento.preventDefault();
+            //deletarTime({ nome: nomeTime, cor: corTime });
+          }}
+        >
+          <h2>Deletar Time.</h2>
+          <ListaSuspensa
+            obrigatorio={true}
+            label="Times"
+            items={times}
+            valor={time}
+            aoAlterado={(valor) => setTime(valor)}
+          />
+          <Botao texto="Deletar Time" />
+        </form>
       </form>
     </section>
   );
