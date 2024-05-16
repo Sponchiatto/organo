@@ -1,5 +1,5 @@
 {
-  "times": [
+  "timesDB": [
     {
       "id": "1",
       "nome": "Programação",
@@ -37,7 +37,7 @@
     }
   ],
 
-  "colaboradores": [
+  "colaboradoresDB": [
     {
       "id": "1",
       "favorito": false,
