@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Botao from "../Botao";
 import Campo from "../Campo";
 import ListaSuspensa from "../ListaSuspensa";
 import "./formulario.css";
+import useLocalState from "@phntms/use-local-state";
 
-const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
+const Formulario = ({ aoCadastrar, times, cadastrarTime, aoDeletarTime }) => {
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
@@ -12,15 +13,26 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
   const [nomeTime, setNomeTime] = useState("");
   const [corTime, setCorTime] = useState("");
 
+
   const aoSubmeter = (evento) => {
     evento.preventDefault();
-    console.log("form enviado", nome, cargo, imagem, time);
     aoCadastrar({
       nome,
       cargo,
       imagem,
       time,
     });
+    setNome("");
+    setCargo("");
+    setImagem("");
+    setTime("");
+  };
+
+  const aoSubmeterNovoTime = (evento) => {
+    evento.preventDefault();
+    cadastrarTime({ nome: nomeTime, cor: corTime });
+    setNomeTime("");
+    setCorTime("");
   };
 
   return (
@@ -44,6 +56,7 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
         <Campo
           label="Imagem"
           placeholder="Informe o endereço da imagem "
+          valor={imagem}
           aoAlterado={(valor) => setImagem(valor)}
         />
         <ListaSuspensa
@@ -55,13 +68,8 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
         />
         <Botao texto="Criar card" />
       </form>
-      <form
-        className="formulario"
-        onSubmit={(evento) => {
-          evento.preventDefault();
-          cadastrarTime({ nome: nomeTime, cor: corTime });
-        }}
-      >
+
+      <form className="formulario" onSubmit={aoSubmeterNovoTime}>
         <h2>Preencha os dados para criar um novo time.</h2>
         <Campo
           obrigatorio={true}
@@ -79,24 +87,22 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
           aoAlterado={(valor) => setCorTime(valor)}
         />
         <Botao texto="Criar Time" />
-        <form
-          className="formulario formulario-deletar"
-          onSubmit={(evento) => {
-            evento.preventDefault();
-            //deletarTime({ nome: nomeTime, cor: corTime });
-          }}
-        >
-          <h2>Deletar Time.</h2>
-          <ListaSuspensa
-            obrigatorio={true}
-            label="Times"
-            items={times}
-            valor={time}
-            aoAlterado={(valor) => setTime(valor)}
-          />
-          <Botao texto="Deletar Time" />
-        </form>
       </form>
+
+      {/* <form
+        className="formulario formulario-deletar"
+        onSubmit={aoSubmeterDeletarTime}
+      >
+        <h2>Deletar Time.</h2>
+        <ListaSuspensa
+          obrigatorio={true}
+          label="Times"
+          items={times}
+          valor={timeParaDeletar}
+          aoAlterado={(valor) => setTimeParaDeletar(valor)}
+        />
+        <Botao texto="Deletar Time" />
+      </form> */}
     </section>
   );
 };
