@@ -16,8 +16,8 @@ const ListaSuspensa = ({
         onChange={(evento) => aoAlterado(evento.target.value)}
       >
         <option />
-        {items.map((item) => (
-          <option key={item}>{item}</option>
+        {items.map((item, index) => (
+          <option key={index}>{item}</option>
         ))}
       </select>
     </div>

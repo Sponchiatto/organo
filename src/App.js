@@ -1,16 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import Banner from "./components/Banner/Banner";
 import Formulario from "./components/Formulario";
 import Time from "./components/Time";
 import Rodape from "./components/Rodape/Rodape";
 import Adicionar from "./components/EsconderMostrarForm";
-import { v4 as uuidv4 } from "uuid";
-import useLocalState from "@phntms/use-local-state";
+import colaboradoresReducer, {
+  ADD_COLABORADOR,
+  DELETE_COLABORADOR,
+  TOGGLE_FAVORITO,
+} from "./reducers/colaboradoresReducer";
+import timesReducer, { ADD_TIME, UPDATE_COR } from "./reducers/timesReducer";
+
+const initialColaboradores = () => {
+  const storedColaboradores = localStorage.getItem("colaboradores");
+  return storedColaboradores ? JSON.parse(storedColaboradores) : [];
+};
+
+const initialTimes = () => {
+  const storedTimes = localStorage.getItem("times");
+  return storedTimes ? JSON.parse(storedTimes) : [];
+};
 
 function App() {
-  // States
-  const [times, setTimes] = useLocalState("times", []);
-  const [colaboradores, setColaboradores] = useLocalState("colaboradores", []);
+  const [colaboradores, dispatchColaboradores] = useReducer(
+    colaboradoresReducer,
+    [],
+    initialColaboradores
+  );
+  const [times, dispatchTimes] = useReducer(timesReducer, [], initialTimes);
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   // Initialize state from localStorage
@@ -20,7 +37,10 @@ function App() {
 
     if (storedTimes) {
       try {
-        setTimes(JSON.parse(storedTimes));
+        dispatchTimes({
+          type: "INITIALIZE_TIMES",
+          payload: JSON.parse(storedTimes),
+        });
       } catch (e) {
         console.error("Failed to parse times from localStorage", e);
       }
@@ -28,12 +48,15 @@ function App() {
 
     if (storedColaboradores) {
       try {
-        setColaboradores(JSON.parse(storedColaboradores));
+        dispatchColaboradores({
+          type: "INITIALIZE_COLABORADORES",
+          payload: JSON.parse(storedColaboradores),
+        });
       } catch (e) {
         console.error("Failed to parse colaboradores from localStorage", e);
       }
     }
-  }, [setTimes, setColaboradores]);
+  }, []);
 
   // Update localStorage whenever times or colaboradores change
   useEffect(() => {
@@ -46,36 +69,23 @@ function App() {
 
   // Handler functions
   const cadastrarColaborador = (colaborador) => {
-    setColaboradores((prevColaboradores) => [
-      ...prevColaboradores,
-      { ...colaborador, id: uuidv4() },
-    ]);
+    dispatchColaboradores({ type: ADD_COLABORADOR, payload: colaborador });
   };
 
   const deletarColaborador = (id) => {
-    setColaboradores((prevColaboradores) =>
-      prevColaboradores.filter((colaborador) => colaborador.id !== id)
-    );
-  };
-
-  const mudarCor = (cor, id) => {
-    setTimes((prevTimes) =>
-      prevTimes.map((time) => (time.id === id ? { ...time, cor } : time))
-    );
-  };
-
-  const aoCriarTime = (novoTime) => {
-    setTimes((prevTimes) => [...prevTimes, { ...novoTime, id: uuidv4() }]);
+    dispatchColaboradores({ type: DELETE_COLABORADOR, payload: id });
   };
 
   const resolverFavorito = (id) => {
-    setColaboradores((prevColaboradores) =>
-      prevColaboradores.map((colaborador) =>
-        colaborador.id === id
-          ? { ...colaborador, favorito: !colaborador.favorito }
-          : colaborador
-      )
-    );
+    dispatchColaboradores({ type: TOGGLE_FAVORITO, payload: id });
+  };
+
+  const mudarCor = (cor, id) => {
+    dispatchTimes({ type: UPDATE_COR, payload: { cor, id } });
+  };
+
+  const aoCriarTime = (novoTime) => {
+    dispatchTimes({ type: ADD_TIME, payload: novoTime });
   };
 
   return (
