@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Organo
+---
+O Organo é uma plataforma de cadastro de Times e Colaboradores. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Vitrine.Dev - [Rafael Sponchiatto](https://cursos.alura.com.br/vitrinedev/rafael-sponchiatto)
+- Tecnologias - React, HTML, CSS e JavaScript
+- Bibliotecas - uuid
+- Deploy - [Organo](https://organo-delta-nine.vercel.app)
+- GitHub - https://github.com/Sponchiatto/organo
 
-## Available Scripts
+# Detalhes do projeto
+  O projeto é um Organizador de times e colaboradores, podendo ser usado não apenas no seu trabalho, mas para aulas, dinâmicas, mesas de RPG.
+  Ele conta com um formulário para criação de times e outro para criação dos colaboradores que serão associados a esses times, nos Banners é possível escolher a cor desses times. E caso você escreva um nome errado é possível deletar o colaborador e também o time da lista.
+---
+## Funções bases
+- Cadastrar Time
+- Cadastrar Colaborador
+- Deletar Colaborador
+- Mudar Cor de Fundo do time
+- Favoritar Colaborador
 
-In the project directory, you can run:
+## Funções extras (não são abordadas no curso)
+- Deletar times da lista suspensa
+- Salvar informações na memória do navegador
+---
+# Conceitos abordados
+- Como o react funciona e por que ele utiliza uma virtual DOM;
+- Diferença entre export e export default;
+- O que são componentes, como criá-los e diferença entre componentes funcionais de classes;
+- props: children, destructing operator com props e como passar dados para o elemento pai, através de funções com props;
+- O que é two-way data binding e one-way data binding(utilizado pelo react) e como passar informação entre componente de diferentes níveis;
+- Uso de métodos de array para iteração de componentes, como map e filter;
+- Renderização condicional com o operador ternário e operador &&. Refatoração de componentes;
+- Eventos no react(eventos sintéticos);
+- Hooks, como useState para criar componentes controlados, e useEffects para impedir loop infinito.
 
-### `npm start`
+# Conceitos Extras
+- Uso do hook useReducer ao invés do useState
+- Carregar, atualizar e mostrar informações do LocalStorage
+  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
