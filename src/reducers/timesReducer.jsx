@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export const ADD_TIME = 'ADD_TIME';
 export const UPDATE_COR = 'UPDATE_COR';
+export const INITIALIZE_TIMES = 'INITIALIZE_TIMES';
 
 const timesReducer = (state, action) => {
   switch (action.type) {

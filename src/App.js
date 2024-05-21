@@ -8,8 +8,12 @@ import colaboradoresReducer, {
   ADD_COLABORADOR,
   DELETE_COLABORADOR,
   TOGGLE_FAVORITO,
+  
 } from "./reducers/colaboradoresReducer";
-import timesReducer, { ADD_TIME, UPDATE_COR } from "./reducers/timesReducer";
+import timesReducer, {
+  ADD_TIME,
+  UPDATE_COR,
+} from "./reducers/timesReducer";
 
 const initialColaboradores = () => {
   const storedColaboradores = localStorage.getItem("colaboradores");

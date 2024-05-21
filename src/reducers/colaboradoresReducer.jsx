@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 export const ADD_COLABORADOR = 'ADD_COLABORADOR';
 export const DELETE_COLABORADOR = 'DELETE_COLABORADOR';
 export const TOGGLE_FAVORITO = 'TOGGLE_FAVORITO';
+export const INITIALIZE_COLABORADORES = 'INITIALIZE_COLABORADORES';
 
 const colaboradoresReducer = (state, action) => {
     switch (action.type) {
