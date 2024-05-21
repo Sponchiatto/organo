@@ -4,7 +4,6 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 80px 50px;
-
 }
 
 .formulario-container .formulario {
@@ -13,6 +12,13 @@
     border-radius: 20px;
     flex: 1;
     padding: 36px 64px;
+}
+
+.formularion-div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* Faz o container adicional ocupar o espaço disponível */
 }
 
 .formulario-container .formulario h2 {

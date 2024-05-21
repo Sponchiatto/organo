@@ -10,7 +10,7 @@ import colaboradoresReducer, {
   DELETE_COLABORADOR,
   TOGGLE_FAVORITO,
 } from "./reducers/colaboradoresReducer";
-import timesReducer, { ADD_TIME, UPDATE_COR } from "./reducers/timesReducer";
+import timesReducer, { ADD_TIME, UPDATE_COR, DELETE_TIME } from "./reducers/timesReducer";
 
 const initialColaboradores = () => {
   const storedColaboradores = localStorage.getItem("colaboradores");
@@ -89,6 +89,13 @@ function App() {
     dispatchTimes({ type: ADD_TIME, payload: novoTime });
   };
 
+  const deletarTime = (nomeTime) => {
+    const timeToDelete = times.find((time) => time.nome === nomeTime);
+    if (timeToDelete) {
+      dispatchTimes({ type: DELETE_TIME, payload: timeToDelete.id });
+    }
+  };
+
   return (
     <div className="App">
       <Banner />
@@ -101,6 +108,7 @@ function App() {
           cadastrarTime={aoCriarTime}
           times={times.map((time) => time.nome)}
           aoCadastrar={cadastrarColaborador}
+          aoDeletarTime={deletarTime}
         />
       )}
       <Adicionar
