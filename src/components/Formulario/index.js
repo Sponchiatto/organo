@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import Botao from "../Botao";
 import Campo from "../Campo";
 import ListaSuspensa from "../ListaSuspensa";
-import "./formulario.css";
-import useLocalState from "@phntms/use-local-state";
+import "../Formulario/formulario.css";
 
 const Formulario = ({ aoCadastrar, times, cadastrarTime, aoDeletarTime }) => {
   const [nome, setNome] = useState("");
@@ -12,7 +11,7 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime, aoDeletarTime }) => {
   const [time, setTime] = useState("");
   const [nomeTime, setNomeTime] = useState("");
   const [corTime, setCorTime] = useState("");
-   const [timeParaDeletar, setTimeParaDeletar] = useState("");
+  const [timeParaDeletar, setTimeParaDeletar] = useState("");
 
   const aoSubmeter = (evento) => {
     evento.preventDefault();
