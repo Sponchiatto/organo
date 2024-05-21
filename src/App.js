@@ -1,3 +1,4 @@
+import "./App.css";
 import { useEffect, useReducer, useState } from "react";
 import Banner from "./components/Banner/Banner";
 import Formulario from "./components/Formulario";
@@ -8,12 +9,8 @@ import colaboradoresReducer, {
   ADD_COLABORADOR,
   DELETE_COLABORADOR,
   TOGGLE_FAVORITO,
-  
 } from "./reducers/colaboradoresReducer";
-import timesReducer, {
-  ADD_TIME,
-  UPDATE_COR,
-} from "./reducers/timesReducer";
+import timesReducer, { ADD_TIME, UPDATE_COR } from "./reducers/timesReducer";
 
 const initialColaboradores = () => {
   const storedColaboradores = localStorage.getItem("colaboradores");
@@ -95,6 +92,10 @@ function App() {
   return (
     <div className="App">
       <Banner />
+      <p className="alert">
+        Seus times e colaboradores ficaram salvos na memória do navegador se
+        você limpar seu histórico, eles serão perdidos!
+      </p>
       {mostrarFormulario && (
         <Formulario
           cadastrarTime={aoCriarTime}
