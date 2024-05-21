@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Botao from "../Botao";
 import Campo from "../Campo";
 import ListaSuspensa from "../ListaSuspensa";
-import "../Formulario/formulario.css";
+import "./formularios.css";
 
 const Formulario = ({ aoCadastrar, times, cadastrarTime, aoDeletarTime }) => {
   const [nome, setNome] = useState("");
