@@ -1,8 +1,29 @@
+import React from "react";
 import Colaborador from "../Colaborador";
 import "./Time.css";
 import hexToRgba from "hex-to-rgba";
+import { IColaboradorType } from "../../compartilhado/interfaces/IColaborador"; 
 
-const Time = ({time, colaboradores, aoDeletar, mudarCor, aoFavoritar}) => {
+
+interface TimeProps {
+  time: {
+    id: number;
+    nome: string;
+    cor: string;
+  };
+  colaboradores: IColaboradorType[];
+  aoDeletar: (id: number) => void;
+  mudarCor: (cor: string, id: number) => void;
+  aoFavoritar: (id: number) => void;
+}
+
+const Time: React.FC<TimeProps> = ({
+  time,
+  colaboradores,
+  aoDeletar,
+  mudarCor,
+  aoFavoritar,
+}) => {
   return (
     colaboradores.length > 0 && (
       <section
@@ -16,7 +37,7 @@ const Time = ({time, colaboradores, aoDeletar, mudarCor, aoFavoritar}) => {
           type="color"
           className="input-cor"
           value={time.cor}
-          onChange={(evento) => {
+          onChange={(evento: React.ChangeEvent<HTMLInputElement>) => {
             mudarCor(evento.target.value, time.id);
           }}
         />
@@ -35,6 +56,6 @@ const Time = ({time, colaboradores, aoDeletar, mudarCor, aoFavoritar}) => {
       </section>
     )
   );
-}
+};
 
 export default Time;
