@@ -73,7 +73,7 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime, aoDeletarTime }) => {
           valor={time}
           aoAlterado={(valor) => setTime(valor)}
         />
-        <Botao texto="Criar card" />
+        <Botao>Criar Card</Botao>
       </form>
       <div className="formularion-div">
         <form className="formulario" onSubmit={aoSubmeterNovoTime}>
@@ -93,7 +93,7 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime, aoDeletarTime }) => {
             valor={corTime}
             aoAlterado={(valor) => setCorTime(valor)}
           />
-          <Botao texto="Criar Time" />
+          <Botao>Criar Time</Botao>
         </form>
 
         <form
@@ -108,7 +108,7 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime, aoDeletarTime }) => {
             valor={timeParaDeletar}
             aoAlterado={(valor) => setTimeParaDeletar(valor)}
           />
-          <Botao texto="Deletar Time" />
+          <Botao>Deletar Time</Botao>
         </form>
       </div>
     </section>

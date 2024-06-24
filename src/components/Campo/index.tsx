@@ -1,6 +1,16 @@
 import "./campo.css";
+import React from "react";
 
-const Campo = ({
+interface CampoTextProps {
+  type?: string;
+  label: string;
+  placeholder?: string;
+  valor: string;
+  aoAlterado: (valor: string) => void;
+  obrigatorio?: boolean;
+}
+
+const Campo: React.FC<CampoTextProps> = ({
   type = "text",
   label,
   placeholder,

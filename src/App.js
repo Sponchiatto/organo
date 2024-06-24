@@ -1,20 +1,20 @@
-import "./App.css"; 
+import "./App.css";
 import { useEffect, useReducer, useState } from "react";
-import Banner from "./components/Banner/Banner"; 
-import Formulario from "./components/Formulario"; 
-import Time from "./components/Time"; 
+import Formulario from "./components/Formulario";
+import Time from "./components/Time";
 import Rodape from "./components/Rodape/Rodape";
+import Banner from "./components/Banner";
 import Adicionar from "./components/EsconderMostrarForm";
 import colaboradoresReducer, {
   ADD_COLABORADOR,
   DELETE_COLABORADOR,
   TOGGLE_FAVORITO,
-} from "./reducers/colaboradoresReducer"; 
+} from "./reducers/colaboradoresReducer";
 import timesReducer, {
   ADD_TIME,
   UPDATE_COR,
   DELETE_TIME,
-} from "./reducers/timesReducer"; 
+} from "./reducers/timesReducer";
 
 // Função para inicializar o estado de colaboradores a partir do localStorage
 const initialColaboradores = () => {
@@ -36,7 +36,7 @@ function App() {
     initialColaboradores
   );
   const [times, dispatchTimes] = useReducer(timesReducer, [], initialTimes);
-  
+
   // Estado para controlar a visibilidade do formulário
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
@@ -113,7 +113,10 @@ function App() {
 
   return (
     <div className="App">
-      <Banner /> {/* Componente de banner */}
+      <Banner
+        enderecoImagem="/imagens/banner.png"
+        textoAlternativo="O Banner da página Organa"
+      />
       <p className="alert">
         Seus times e colaboradores ficaram salvos na memória do navegador se
         você limpar seu histórico, eles serão perdidos!
