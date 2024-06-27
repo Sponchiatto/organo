@@ -1,6 +1,14 @@
 import "./lista-suspensa.css";
 
-const ListaSuspensa = ({
+interface ListaSuspensaProps {
+  aoAlterado: (valor: string) => void;
+  label: string;
+  obrigatorio?: boolean;
+  valor: string;
+  items: string[];
+}
+
+const ListaSuspensa: React.FC<ListaSuspensaProps> = ({
   label,
   items,
   valor,

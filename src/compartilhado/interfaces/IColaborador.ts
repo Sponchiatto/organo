@@ -4,5 +4,6 @@ export interface IColaboradorType {
   nome: string;
   imagem: string;
   cargo: string;
-  favorito: boolean;
+  favorito?: boolean;
+  time?: string
 }
