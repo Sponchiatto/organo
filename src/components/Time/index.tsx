@@ -2,8 +2,7 @@ import React from "react";
 import Colaborador from "../Colaborador";
 import "./Time.css";
 import hexToRgba from "hex-to-rgba";
-import { IColaboradorType } from "../../compartilhado/interfaces/IColaborador"; 
-
+import { IColaboradorType } from "../../compartilhado/interfaces/IColaborador";
 
 interface TimeProps {
   time: {
@@ -24,37 +23,39 @@ const Time: React.FC<TimeProps> = ({
   mudarCor,
   aoFavoritar,
 }) => {
+  if (colaboradores.length === 0) {
+    return null; // Return null instead of false
+  }
+
   return (
-    colaboradores.length > 0 && (
-      <section
-        className="time"
-        style={{
-          backgroundImage: "url(/imagens/fundo.png)",
-          backgroundColor: hexToRgba(time.cor, "0.6"),
+    <section
+      className="time"
+      style={{
+        backgroundImage: "url(/imagens/fundo.png)",
+        backgroundColor: hexToRgba(time.cor, "0.6"),
+      }}
+    >
+      <input
+        type="color"
+        className="input-cor"
+        value={time.cor}
+        onChange={(evento: React.ChangeEvent<HTMLInputElement>) => {
+          mudarCor(evento.target.value, time.id);
         }}
-      >
-        <input
-          type="color"
-          className="input-cor"
-          value={time.cor}
-          onChange={(evento: React.ChangeEvent<HTMLInputElement>) => {
-            mudarCor(evento.target.value, time.id);
-          }}
-        />
-        <h3 style={{ borderColor: time.cor }}>{time.nome}</h3>
-        <div className="colaboradores">
-          {colaboradores.map((colaborador, indice) => (
-            <Colaborador
-              key={indice}
-              colaborador={colaborador}
-              corDeFundo={time.cor}
-              aoDeletar={aoDeletar}
-              aoFavoritar={aoFavoritar}
-            />
-          ))}
-        </div>
-      </section>
-    )
+      />
+      <h3 style={{ borderColor: time.cor }}>{time.nome}</h3>
+      <div className="colaboradores">
+        {colaboradores.map((colaborador, indice) => (
+          <Colaborador
+            key={indice}
+            colaborador={colaborador}
+            corDeFundo={time.cor}
+            aoDeletar={aoDeletar}
+            aoFavoritar={aoFavoritar}
+          />
+        ))}
+      </div>
+    </section>
   );
 };
 
